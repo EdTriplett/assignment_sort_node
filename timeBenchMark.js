@@ -2,6 +2,7 @@ const insertion = require("./insertion-sort");
 const bubble = require("./bubble-sort");
 const merge = require("./mergeSort");
 const quick = require('./quickSort')
+const iterQuick = require('./iterativeQuickSort')
 
 
 let bigArr = (int) =>{
@@ -16,7 +17,7 @@ let bigArr = (int) =>{
 benchmark = (arr, iterations) =>{
   let start = Date.now()
   for (let i=0; i<iterations; i++){
-  insertion(arr)   
+  insertion([...arr])   
   }
   let end = Date.now()
   console.log('Insertion took ', end-start, ' ms')
@@ -24,7 +25,7 @@ benchmark = (arr, iterations) =>{
 
   start = Date.now()
   for (let i=0; i<iterations; i++){
-  bubble(arr)   
+  bubble([...arr])   
   }
   end = Date.now()
   console.log('Bubble took ', end-start, ' ms')
@@ -32,17 +33,24 @@ benchmark = (arr, iterations) =>{
 
   start = Date.now()
   for (let i=0; i<iterations; i++){
-  merge(arr)   
+  merge([...arr])   
   }
   end = Date.now()
   console.log('Merge took ', end-start, ' ms')
 
   start = Date.now()
   for (let i=0; i<iterations; i++){
-  quick(arr)   
+  quick([...arr])   
   }
   end = Date.now()
   console.log('Quick took ', end-start, ' ms')
+
+  start = Date.now()
+  for (let i=0; i<iterations; i++){
+  iterQuick([...arr])   
+  }
+  end = Date.now()
+  console.log('iterQuick took ', end-start, ' ms')
 
 }
 
@@ -52,4 +60,12 @@ benchmark(bigArr(1000), 1000);
 Insertion took  906202  ms
 Bubble took  4824  ms
 Merge took  1155313  ms
+
+benchmark(bigArr(1000), 1000):
+Insertion took  27  ms
+Bubble took  5  ms
+Merge took  644  ms
+Quick took  9524  ms
+iterQuick took  18618  ms
+
 */

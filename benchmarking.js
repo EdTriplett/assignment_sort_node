@@ -1,13 +1,15 @@
 const insertion = require("./insertion-sort");
 const bubble = require("./bubble-sort");
 const merge = require("./mergeSort");
+const quick = require('./quickSort')
+const iterQuick = require('./iterativeQuickSort')
 const Benchmark = require("benchmark");
 const suite = new Benchmark.Suite();
 
-const arr = new Array(1000000);
+const arr = new Array(1000);
 
-for (let i = 0; i < 1000000; i++) {
-	arr[i] = Math.floor(Math.random() * 10000000);
+for (let i = 0; i < 1000; i++) {
+	arr[i] = Math.floor(Math.random() * 10000);
 }
 
 /* with 1 million member array
@@ -19,13 +21,19 @@ Fastest is Bubble Sort
 
 suite
 	.add("Insertion Sort", () => {
-		insertion(arr);
+		insertion([...arr]);
 	})
 	.add("Bubble Sort", () => {
-		bubble(arr);
+		bubble([...arr]);
 	})
 	.add("Merge Sort", () => {
-		merge(arr);
+		merge([...arr]);
+	})
+	.add("Quick Sort", () => {
+		quick([...arr]);
+	})
+	.add('Iterative Quick Sort', ()=>{
+		iterQuick([...arr]);
 	})
 	.on("cycle", function(event) {
 		console.log(String(event.target));
