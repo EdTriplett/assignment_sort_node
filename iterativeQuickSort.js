@@ -1,4 +1,4 @@
-const quickSort = (arr, start=0, end=arr.length) => {
+const iterativeQuickSort = (arr, start=0, end=arr.length) => {
   if (end-start < 2) return;
 
   let pivot = arr[end-1];
@@ -15,9 +15,9 @@ const quickSort = (arr, start=0, end=arr.length) => {
   }
 
   [arr[end - 1], arr[pivotPoint]] = [arr[pivotPoint], pivot];
-  quickSort(arr, start, pivotPoint)
-  quickSort(arr, pivotPoint+1, end)
+  iterativeQuickSort(arr, start, pivotPoint)
+  iterativeQuickSort(arr, pivotPoint+1, end)
   return arr;
 };
 
-module.exports = quickSort
+module.exports = iterativeQuickSort
