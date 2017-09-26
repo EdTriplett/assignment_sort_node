@@ -12,4 +12,10 @@ const bubbleSort = arr => {
 	return arr;
 };
 
+// let arr = new Array(10000)
+// for (let i=0; i<10000; i++){
+// 	arr[i] = Math.floor(Math.random()*100000)
+// }
+// console.log(bubbleSort(arr))
+
 module.exports = bubbleSort;
