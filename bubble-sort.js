@@ -8,8 +8,8 @@ const bubbleSort = arr => {
 				[arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
 			}
 		}
-		return arr;
 	}
+		return arr;
 };
 
 console.log(bubbleSort([3, 5, 1, 100, 7, 2, 4]));
