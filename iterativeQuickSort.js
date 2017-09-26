@@ -1,23 +1,32 @@
-const iterativeQuickSort = (arr, start=0, end=arr.length) => {
-  if (end-start < 2) return;
+const iterativeQuickSort = arr => {
+  const stack = [{ start: 0, end: arr.length - 1 }];
 
-  let pivot = arr[end-1];
-  let pivotPoint = start;
-  let sortedPoint = start;
+  while (stack.length) {
+    console.log(arr);
+    let { start, end } = stack.pop();
+    let pivot = arr[end];
+    let pivotPoint = start;
+    let sortedPoint = start;
 
-  for (let i = start; i < end - 1; i++) {
-    if (arr[i] <= pivot) {
-      [arr[i], arr[pivotPoint]] = [arr[pivotPoint], arr[i]];
-      pivotPoint++;
+    for (let i = start; i < end; i++) {
+      if (arr[i] <= pivot) {
+        [arr[i], arr[pivotPoint]] = [arr[pivotPoint], arr[i]];
+        pivotPoint++;
+      }
+
+      sortedPoint++;
     }
 
-    sortedPoint++;
+    [arr[end], arr[pivotPoint]] = [arr[pivotPoint], pivot];
+    if (!(end - start < 2)) {
+      stack.push({ start: 0, end: pivotPoint - 1 });
+      stack.push({ start: pivotPoint + 1, end: end });
+    }
   }
 
-  [arr[end - 1], arr[pivotPoint]] = [arr[pivotPoint], pivot];
-  iterativeQuickSort(arr, start, pivotPoint)
-  iterativeQuickSort(arr, pivotPoint+1, end)
   return arr;
 };
 
-module.exports = iterativeQuickSort
+console.log(iterativeQuickSort([8, 7, 6, 5, 4, 3, 2, 1]));
+
+module.exports = iterativeQuickSort;
