@@ -1,11 +1,11 @@
-const quickSort = arr => {
-	if (arr.length < 2) return arr;
+const quickSort = (arr, start=0, end=arr.length) => {
+	if (end-start < 2) return;
 
-	let pivot = arr[arr.length - 1];
-	let pivotPoint = 0;
-	let sortedPoint = 0;
+	let pivot = arr[end-1];
+	let pivotPoint = start;
+	let sortedPoint = start;
 
-	for (let i = 0; i < arr.length - 1; i++) {
+	for (let i = start; i < end - 1; i++) {
 		if (arr[i] <= pivot) {
 			[arr[i], arr[pivotPoint]] = [arr[pivotPoint], arr[i]];
 			pivotPoint++;
@@ -14,9 +14,10 @@ const quickSort = arr => {
 		sortedPoint++;
 	}
 
-	[arr[arr.length - 1], arr[pivotPoint]] = [arr[pivotPoint], pivot];
-
+	[arr[end - 1], arr[pivotPoint]] = [arr[pivotPoint], pivot];
+	quickSort(arr, start, pivotPoint)
+	quickSort(arr, pivotPoint+1, end)
 	return arr;
 };
 
-console.log(quickSort([6, 5, 9, 8, 7, 3, 1, 2, 4]));
+module.exports = quickSort

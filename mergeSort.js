@@ -32,5 +32,5 @@ function mergeSort(arr) {
   rightArr = mergeSort(rightArr);
   return merge(leftArr, rightArr);
 }
-
+// Slowed by extra array creation
 module.exports = mergeSort;
