@@ -9,7 +9,7 @@ const bubbleSort = arr => {
 			}
 		}
 	}
-		return arr;
+	return arr;
 };
 
-console.log(bubbleSort([3, 5, 1, 100, 7, 2, 4]));
+module.exports = bubbleSort;

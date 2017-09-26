@@ -23,4 +23,4 @@ const insert = (arr, rightIndex, value) => {
 	arr[i + 1] = value;
 };
 
-console.log(insertionSort([3, 4, 17, -1, 6, 5, 4, -49, 9, 1]));
+module.exports = insertionSort;
